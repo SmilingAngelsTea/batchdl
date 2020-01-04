@@ -1,4 +1,4 @@
-A commandline application to batch download stuff.
+A command line application to batch download stuff.
 
 First argument is the path to the text file containing the links.
 
