@@ -7,7 +7,8 @@ namespace batchdl {
         static void Main(string[] args) {
             Console.WriteLine("batchdl\n\n" +
                 "Treats each line from a text file as a link and downloads them in order.\n" +
-                "USAGE: batchdl (text file location) [folder to output to]\n");
+                "USAGE: batchdl (text file location) [folder to output to]\n" +
+                "Do note that links will not be recognized without the 'http://' or 'https://'\n");
             if (args.Length < 1) {
                 Console.WriteLine("No text file specified. Exiting now.");
                 Environment.Exit(0);
@@ -32,8 +33,8 @@ namespace batchdl {
                     var extension = Path.GetExtension(uri.AbsolutePath);
                     Console.WriteLine("Downloading: " + urls[i] + " as " + i + extension);
                     WebClient webClient = new WebClient();
-                    Console.WriteLine(Path.GetDirectoryName(list) + "//" + folder);
-                    webClient.DownloadFile(urls[i], Path.GetDirectoryName(list) + "//" + folder + "//" + i + extension);
+                    Console.WriteLine(Path.GetDirectoryName(Path.GetFullPath(list)) + "\\" + folder + "\\" + i + extension);
+                    webClient.DownloadFile(urls[i], Path.GetDirectoryName(Path.GetFullPath(list)) + "\\" + folder + "\\" + i + extension);
                 }
 
             } catch (Exception e){
