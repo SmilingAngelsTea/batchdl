@@ -5,12 +5,20 @@ using System.Net;
 namespace batchdl {
     class Program {
         static void Main(string[] args) {
-            if(args.Length < 2) {
-                Console.WriteLine("Not enough arguments.");
+            if (args.Length < 1) {
+                Console.WriteLine("No text file specified. Exiting now.");
                 Environment.Exit(0);
             }
             string list = args[0];
-            string folder = args[1];
+            string folder = "";
+            if (args.Length < 2) {
+                string listname = Path.GetFileNameWithoutExtension(list);
+                Console.WriteLine("No folder name specified. Using the text file name (" + listname + ") as the folder name.");
+                folder = listname;
+                Environment.Exit(0);
+            } else {
+                folder = args[1];
+            }
             string[] urls = null;
             try {
                 Directory.CreateDirectory(folder);
