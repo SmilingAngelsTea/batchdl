@@ -19,7 +19,6 @@ namespace batchdl {
                 Console.WriteLine("No folder name specified. Using the text file name (" + listname + ") as the folder name.\n" +
                 "Do note that the folder will be created next to the text file.");
                 folder = listname;
-                Console.WriteLine(folder);
             } else {
                 folder = args[1];
             }
